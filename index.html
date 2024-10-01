@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css" rel="stylesheet" />
+    <title>FullCalendar Example</title>
+</head>
+<body>
+
+<div id="calendar"></div>
+
+<script type="module">
+    import { Calendar } from 'https://cdn.jsdelivr.net/npm/fullcalendar/+esm';
+    import luxon3Plugin from 'https://cdn.jsdelivr.net/npm/@fullcalendar/luxon3/+esm';
+
+    const calendarEl = document.getElementById('calendar');
+
+    const calendar = new Calendar(calendarEl, {
+        plugins: [luxon3Plugin],
+        initialView: 'timeGridWeek',
+        headerToolbar: {
+            left: 'prev,next today',
+            center: 'title',
+            right: 'timeGridWeek,timeGridDay'
+        },
+        views: {
+            timeGridWeek: {
+                titleFormat: { month: 'long', year: 'numeric' }
+            }
+        }
+    });
+
+    calendar.render();
+</script>
+
+</body>
+</html>
